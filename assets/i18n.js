@@ -50,9 +50,9 @@ window.VEENI_TEXT = {
     "set.sold": "Sold",
     "set.add": "Add {name} to bag",
     "set.comingSoon": "Coming soon",
-    "set.comingSoonNote": "The online shop opens soon. Follow along on {instagram} to be the first to know.",
+    "set.comingSoonNote": "Follow along on {instagram} to be the first to know when it opens.",
     "home.promiseSoon": "Online shop opening soon",
-    "home.soonTitle": "The gift sets are on their way.",
+    "home.soonTitle": "Shop coming soon",
 
     "bag.title": "Your bag",
     "bag.empty": "Your bag is empty.",
@@ -195,9 +195,9 @@ window.VEENI_TEXT = {
     "set.sold": "Prodáno",
     "set.add": "Přidat do košíku: {name}",
     "set.comingSoon": "Již brzy",
-    "set.comingSoonNote": "Online obchod brzy otevřu. Sledujte mě na {instagram} a dozvíte se to jako první.",
+    "set.comingSoonNote": "Sledujte mě na {instagram} a dozvíte se jako první, až otevřu.",
     "home.promiseSoon": "Online obchod již brzy",
-    "home.soonTitle": "Dárkové sady jsou na cestě.",
+    "home.soonTitle": "Obchod již brzy",
 
     "bag.title": "Váš košík",
     "bag.empty": "Košík je prázdný.",

@@ -239,7 +239,6 @@
     if (grid) {
       grid.outerHTML =
         '<section class="coming-soon">' +
-        '<p class="label">' + v.t("set.comingSoon") + "</p>" +
         "<h2>" + v.escapeHtml(v.t("home.soonTitle")) + "</h2>" +
         "<p>" + v.t("set.comingSoonNote", { instagram: '<a href="https://www.instagram.com/' + v.config.instagram + '/" rel="noopener">Instagram</a>' }) + "</p>" +
         "</section>";
