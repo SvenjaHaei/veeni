@@ -190,8 +190,17 @@
     render();
   }
 
-  // Shop page: the next few dates (workshops and markets), soonest first. Hidden when nothing is coming up.
+  // Shop page: workshops and markets in the next two weeks (at most three), soonest first.
+  // Hidden when nothing is coming up that soon; the calendar page lists everything.
   var NEXT_EVENTS = 3;
+  var NEXT_DAYS = 14;
+
+  function isSoon(event) {
+    var limit = new Date();
+    limit.setHours(0, 0, 0, 0);
+    limit.setDate(limit.getDate() + NEXT_DAYS);
+    return v.isUpcoming(event) && v.parseDate(event.date) <= limit;
+  }
   function renderNextWorkshop() {
     var section = document.getElementById("next-workshop");
     if (!section) {
@@ -201,7 +210,7 @@
       var target = document.getElementById("next-workshop-event");
       function render() {
         var next = events
-          .filter(v.isUpcoming)
+          .filter(isSoon)
           .sort(function (a, b) { return a.date < b.date ? -1 : 1; })
           .slice(0, NEXT_EVENTS);
         section.hidden = !next.length;
