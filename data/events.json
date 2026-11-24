@@ -4,11 +4,20 @@
     "date": "2026-07-10",
     "title": "Workshop: Cast with Raysin - Choose a Mold, Create a Unique Piece",
     "type": "Workshop",
-    "city": "Prague",
-    "venue": "Full Spectrum Workshop",
+    "city": {
+      "en": "Prague",
+      "cs": "Praha"
+    },
+    "venue": {
+      "en": "Full Spectrum Workshop",
+      "cs": "Full Spectrum Workshop"
+    },
     "startTime": "16:00",
     "endTime": "18:30",
-    "description": "A creative hands-on workshop where you cast with Raysin and create your own unique piece.",
+    "description": {
+      "en": "A creative hands-on workshop where you cast with Raysin and create your own unique piece.",
+      "cs": "Kreativní workshop, kde budete odlévat z Raysinu a vytvoříte si vlastní jedinečný kousek."
+    },
     "price": "850 CZK",
     "capacity": "8 participants",
     "registrationUrl": "https://www.fullspectrumworkshop.com/cast-with-raysin---choose-a-mold-create-a-unique-piece/"
@@ -18,11 +27,20 @@
     "date": "2026-08-15",
     "title": "Zenden Pop-up",
     "type": "Pop-up",
-    "city": "Prague",
-    "venue": "Zen Den Yoga Prague",
+    "city": {
+      "en": "Prague",
+      "cs": "Praha"
+    },
+    "venue": {
+      "en": "Zen Den Yoga Prague",
+      "cs": "Zen Den Yoga Prague"
+    },
     "startTime": "10:00",
     "endTime": "15:00",
-    "description": "Meet the makers behind Znova Kolektiv and veeni, explore our handcrafted products and enjoy simple, creative workshops before or after your flow at Zen Den Yoga.",
+    "description": {
+      "en": "Meet the makers behind Znova Kolektiv and veeni, explore our handcrafted products and enjoy simple, creative workshops before or after your flow at Zen Den Yoga.",
+      "cs": "Seznamte se s tvůrci ze Znova Kolektiv a veeni, prohlédněte si naše ručně vyrobené výrobky a užijte si jednoduché tvořivé workshopy před lekcí jógy v Zen Den Yoga nebo po ní."
+    },
     "price": "Free entry",
     "capacity": "Public event",
     "registrationUrl": "No registration needed"
@@ -32,11 +50,20 @@
     "date": "2026-09-12",
     "title": "Zažit Americkou Jinak 2026",
     "type": "Market",
-    "city": "Prague",
-    "venue": "Americka + Zahrebska",
+    "city": {
+      "en": "Prague",
+      "cs": "Praha"
+    },
+    "venue": {
+      "en": "Americka + Zahrebska",
+      "cs": "Americká + Záhřebská"
+    },
     "startTime": "10:30",
     "endTime": "21:30",
-    "description": "Street festival with concerts, workshops, dance, food, cocktails, nonprofit presentations, and local designers in Americka and Zahrebska. I will be there selling my handmade products.",
+    "description": {
+      "en": "Street festival with concerts, workshops, dance, food, cocktails, nonprofit presentations, and local designers in Americka and Zahrebska. I will be there selling my handmade products.",
+      "cs": "Pouliční festival s koncerty, workshopy, tancem, jídlem, koktejly, prezentacemi neziskovek a místními designéry v Americké a Záhřebské. Budu tam prodávat své ručně vyrobené výrobky."
+    },
     "price": "Free entry",
     "capacity": "Public event",
     "registrationUrl": "https://www.mintmarket.cz/cs/trh/zazit-americkou-jinak-2026"
@@ -46,11 +73,20 @@
     "date": "2026-11-28",
     "title": "MINT Market Praha no. 53",
     "type": "Market",
-    "city": "Prague",
-    "venue": "Holešovická tržnice, hall 13",
+    "city": {
+      "en": "Prague",
+      "cs": "Praha"
+    },
+    "venue": {
+      "en": "Holešovická tržnice, hall 13",
+      "cs": "Holešovická tržnice, hala 13"
+    },
     "startTime": "10:00",
     "endTime": "18:00",
-    "description": "Christmas gift market with over 100 Czech and international brands: fashion, jewellery, ceramics, candles, stationery and more, plus a kids' corner. The only MINT market in Prague before Christmas. Come and say hi at my stall.",
+    "description": {
+      "en": "Christmas gift market with over 100 Czech and international brands: fashion, jewellery, ceramics, candles, stationery and more, plus a kids' corner. The only MINT market in Prague before Christmas. Come and say hi at my stall.",
+      "cs": "Vánoční dárkový trh s více než 100 českými i zahraničními značkami: móda, šperky, keramika, svíčky, papírnictví a další, plus dětský koutek. Jediný MINT trh v Praze před Vánoci. Přijďte se pozdravit k mému stánku."
+    },
     "price": "Free entry",
     "capacity": "Public event",
     "registrationUrl": "https://www.mintmarket.cz/cs/trh/praha-53"
@@ -60,11 +96,20 @@
     "date": "2026-11-29",
     "title": "MINT Market Praha no. 53",
     "type": "Market",
-    "city": "Prague",
-    "venue": "Holešovická tržnice, hall 13",
+    "city": {
+      "en": "Prague",
+      "cs": "Praha"
+    },
+    "venue": {
+      "en": "Holešovická tržnice, hall 13",
+      "cs": "Holešovická tržnice, hala 13"
+    },
     "startTime": "10:00",
     "endTime": "16:00",
-    "description": "Christmas gift market with over 100 Czech and international brands: fashion, jewellery, ceramics, candles, stationery and more, plus a kids' corner. The only MINT market in Prague before Christmas. Come and say hi at my stall.",
+    "description": {
+      "en": "Christmas gift market with over 100 Czech and international brands: fashion, jewellery, ceramics, candles, stationery and more, plus a kids' corner. The only MINT market in Prague before Christmas. Come and say hi at my stall.",
+      "cs": "Vánoční dárkový trh s více než 100 českými i zahraničními značkami: móda, šperky, keramika, svíčky, papírnictví a další, plus dětský koutek. Jediný MINT trh v Praze před Vánoci. Přijďte se pozdravit k mému stánku."
+    },
     "price": "Free entry",
     "capacity": "Public event",
     "registrationUrl": "https://www.mintmarket.cz/cs/trh/praha-53"
@@ -74,11 +119,20 @@
     "date": "2026-12-12",
     "title": "Park Lane Winter Market",
     "type": "Market",
-    "city": "Prague",
-    "venue": "Park Lane International School, Valdštejnská campus",
+    "city": {
+      "en": "Prague",
+      "cs": "Praha"
+    },
+    "venue": {
+      "en": "Park Lane International School, Valdštejnská campus",
+      "cs": "Park Lane International School, kampus Valdštejnská"
+    },
     "startTime": "12:00",
     "endTime": "18:00",
-    "description": "A festive winter market at Park Lane International School in Malá Strana, with handmade crafts, ceramics, jewellery, candles and Christmas decorations. I will be there with my handmade pieces.",
+    "description": {
+      "en": "A festive winter market at Park Lane International School in Malá Strana, with handmade crafts, ceramics, jewellery, candles and Christmas decorations. I will be there with my handmade pieces.",
+      "cs": "Sváteční zimní trh na Park Lane International School na Malé Straně s ručně vyrobenými výrobky, keramikou, šperky, svíčkami a vánočními dekoracemi. Budu tam se svými ručně vyrobenými kousky."
+    },
     "price": "Free entry",
     "capacity": "Public event",
     "registrationUrl": "No registration needed"

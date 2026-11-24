@@ -136,11 +136,24 @@ content:
           values: [Workshop, Market, Pop-up]
       - { name: startTime, label: "Starts (e.g. 14:00)", type: string }
       - { name: endTime, label: "Ends (e.g. 16:30)", type: string }
-      - { name: venue, label: Place, type: string }
-      - { name: city, label: City, type: string }
+      - name: venue
+        label: Place
+        type: object
+        fields:
+          - { name: en, label: English, type: string }
+          - { name: cs, label: Czech, type: string }
+      - name: city
+        label: City
+        type: object
+        fields:
+          - { name: en, label: English, type: string }
+          - { name: cs, label: Czech, type: string }
       - name: description
         label: Description
-        type: text
+        type: object
+        fields:
+          - { name: en, label: English, type: text }
+          - { name: cs, label: Czech, type: text }
       - name: booking
         label: Sign-up on veeni (workshops only, leave empty for markets)
         type: object

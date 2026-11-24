@@ -436,7 +436,7 @@
             kind: "workshop",
             storeIndex: storeIndex,
             event: event,
-            name: event.title,
+            name: local(event.title),
             label: t("bag.workshop"),
             qty: qty,
             max: event.booking.spots,
@@ -635,14 +635,14 @@
     var locale = lang === "cs" ? "cs-CZ" : "en-GB";
     var weekday = parseDate(event.date).toLocaleDateString(locale, { weekday: "long" });
     var time = event.startTime ? event.startTime + (event.endTime ? "–" + event.endTime : "") : "";
-    var meta = [t("calendar.type." + event.type), weekday, time, event.venue, event.city].filter(Boolean).join(" · ");
+    var meta = [t("calendar.type." + event.type), weekday, time, local(event.venue), local(event.city)].filter(Boolean).join(" · ");
     return (
       '<article class="event' + (isPast ? " is-past" : "") + '" id="event-' + escapeHtml(event.id) + '">' +
       datePebble(event.date, isPast) +
       "<div>" +
-      "<h3>" + (link ? '<a class="event-link" href="' + escapeHtml(link) + '">' + escapeHtml(event.title) + "</a>" : escapeHtml(event.title)) + "</h3>" +
+      "<h3>" + (link ? '<a class="event-link" href="' + escapeHtml(link) + '">' + escapeHtml(local(event.title)) + "</a>" : escapeHtml(local(event.title))) + "</h3>" +
       '<p class="event-meta">' + escapeHtml(meta) + "</p>" +
-      (event.description && !isPast ? '<p class="event-text">' + escapeHtml(event.description) + "</p>" : "") +
+      (local(event.description) && !isPast ? '<p class="event-text">' + escapeHtml(local(event.description)) + "</p>" : "") +
       "</div>" +
       (isPast ? "" : bookingHtml(event)) +
       "</article>"
@@ -656,7 +656,7 @@
       var event = id && events.find(function (e) { return e.id === id; });
       if (event && isBookable(event)) {
         addWorkshop(event.id, event.booking.spots);
-        track("AddToCart", { content_ids: ["WS-" + event.id], content_name: event.title, content_type: "product", value: event.booking.price });
+        track("AddToCart", { content_ids: ["WS-" + event.id], content_name: local(event.title), content_type: "product", value: event.booking.price });
         openBag();
       }
     });
