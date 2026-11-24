@@ -1390,7 +1390,8 @@ main {
   }
 
   .event h3 {
-  font-size: 20px;
+    font-size: 20px;
+  }
 }
 
 .event-meta {
