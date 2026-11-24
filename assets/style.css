@@ -1701,6 +1701,12 @@ main {
   -webkit-mask: var(--shape-pebble) center / 100% 100% no-repeat; mask: var(--shape-pebble) center / 100% 100% no-repeat;
 }
 .coming-soon-shape h2 { position: relative; margin: 0.4em 0 0; padding: 0 18%; color: var(--paper); font-size: clamp(1.7rem, 5.5vw, 2.6rem); line-height: 1.15; }
+/* On wide screens the drop (leaf): wider and lower. Its body sits right of centre, so the words move with it. */
+@media (min-width: 801px) {
+  .coming-soon-shape { width: 640px; aspect-ratio: 100 / 50; }
+  .coming-soon-shape::before { -webkit-mask-image: var(--shape-leaf); mask-image: var(--shape-leaf); }
+  .coming-soon-shape h2 { margin: 0.9em 0 0; padding: 0 6% 0 28%; font-size: 2.1rem; }
+}
 .coming-soon p { margin: 0; }
 .coming-soon a { text-decoration: underline; text-underline-offset: 0.15em; }
 .coming-soon-note { margin: 0.6rem 0 0; }
