@@ -190,7 +190,8 @@
     render();
   }
 
-  // Shop page: show the next workshop people can still sign up for, if there is one.
+  // Shop page: the next few dates (workshops and markets), soonest first. Hidden when nothing is coming up.
+  var NEXT_EVENTS = 3;
   function renderNextWorkshop() {
     var section = document.getElementById("next-workshop");
     if (!section) {
@@ -200,10 +201,13 @@
       var target = document.getElementById("next-workshop-event");
       function render() {
         var next = events
-          .filter(v.isBookable)
-          .sort(function (a, b) { return a.date < b.date ? -1 : 1; })[0];
-        section.hidden = !next;
-        target.innerHTML = next ? v.eventHtml(next, false, "calendar.html#event-" + encodeURIComponent(next.id)) : "";
+          .filter(v.isUpcoming)
+          .sort(function (a, b) { return a.date < b.date ? -1 : 1; })
+          .slice(0, NEXT_EVENTS);
+        section.hidden = !next.length;
+        target.innerHTML = next
+          .map(function (event) { return v.eventHtml(event, false, "calendar.html#event-" + encodeURIComponent(event.id)); })
+          .join("");
       }
       render();
       v.bindBooking(target, events);
