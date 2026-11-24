@@ -1,0 +1,1700 @@
+/* DM Sans, served from the site itself (no request to Google). One variable file per character set,
+   covering weights 400 and 500; licence in fonts/OFL.txt. */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("fonts/dm-sans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("fonts/dm-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --paper: #FAF7F2;
+  --white: #FFFFFF;
+  --ink: #1F2422;
+  --ink-soft: rgba(31, 36, 34, 0.68);
+  --kraft-light: #ECE4D7;
+  --line: #C8BBA7;
+  --line-dark: #B6A78F;
+  --plum: #8A5C7D;
+  --overlay: rgba(31, 36, 34, 0.32);
+  --danger: #8C2828;
+
+  /* Signature shapes from the brand board, used as masks so their colour comes from the tokens above. */
+  --shape-pebble: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M10 52C6 28 32 4 62 6c26 2 38 28 30 52-8 22-36 32-58 26C20 80 12 68 10 52Z'/%3E%3C/svg%3E");
+  --shape-pebble-mirrored: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M90 52C94 28 68 4 38 6c-26 2-38 28-30 52 8 22 36 32 58 26C80 80 88 68 90 52Z'/%3E%3C/svg%3E");
+  --shape-arch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 72'%3E%3Cpath d='M4 63C2 31 21 4 51 4c30 0 47 24 45 56q-1 10-10 10H71q-6 0-6-7c0-11-6-18-14-18s-14 7-15 17q0 8-8 8H12Q4 70 4 63Z'/%3E%3C/svg%3E");
+  --shape-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M3 42C28 34 48 8 76 6c14-1 22 8 21 18-2 14-20 22-42 22-18 0-36-1-52-4Z'/%3E%3C/svg%3E");
+  --shape-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 12'%3E%3Cpath d='M0 6c6-6 18-6 24 0s18 6 24 0' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E");
+
+  --font: "DM Sans", system-ui, sans-serif;
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Page transitions (Chrome, Edge, Safari): a soft fade between pages, and the gift set photo
+   glides from the shop grid into place. Off for people who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}
+
+::view-transition-group(set-photo) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.site-header {
+  view-transition-name: site-header;
+}
+
+.set-photo-main {
+  view-transition-name: set-photo;
+}
+
+/* The gift set text and the smaller photos fade in together while the main photo glides into place. */
+@media (prefers-reduced-motion: no-preference) {
+  .set-info.is-filled,
+  .set-photos .photo:not(.set-photo-main) {
+    animation: veeni-fade 0.4s ease-out 0.1s both;
+  }
+}
+
+@keyframes veeni-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.6 var(--font);
+  -webkit-font-smoothing: antialiased;
+  /* Safety net: the hidden bag panel must never let the page shift sideways on phones. */
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+main {
+  min-height: 60vh;
+  padding-bottom: 96px;
+}
+
+/* Test mode band */
+
+.test-band {
+  margin: 0;
+  padding: 8px var(--gutter);
+  background: var(--plum);
+  color: var(--paper);
+  text-align: center;
+}
+
+.test-band a {
+  color: inherit;
+}
+
+/* Header */
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.site-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.site-logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Lockup from the brand board: wordmark with "HANDMADE IN PRAGUE" underneath */
+/* Font size is fitted to the logo width by site.js (fitTagline); 9px is the starting point. */
+.site-tagline {
+  display: block;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-right: -0.2em;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(14px, 3vw, 32px);
+}
+
+.site-nav a,
+.site-nav button {
+  white-space: nowrap;
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav button:hover,
+.site-nav a[aria-current="page"] {
+  border-bottom-color: var(--ink);
+}
+
+.bag-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bag-toggle svg {
+  display: block;
+}
+
+.site-nav .bag-toggle:hover {
+  border-bottom-color: transparent;
+  opacity: 0.7;
+}
+
+.bag-count {
+  position: absolute;
+  top: -2px;
+  right: -8px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.bag-count:empty {
+  display: none;
+}
+
+.lang-switch {
+  color: var(--ink-soft);
+}
+
+/* Page heads */
+
+.page-head {
+  padding: 32px 0 40px;
+  max-width: 40rem;
+}
+
+.page-head h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: -0.02em;
+}
+
+.page-head .label {
+  margin-bottom: 16px;
+}
+
+.page-head p:last-child {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+/* Next workshop on the shop page */
+
+.next-workshop {
+  margin-top: 96px;
+}
+
+.next-workshop::before {
+  content: "";
+  display: block;
+  height: 8px;
+  margin-bottom: 48px;
+  background: var(--plum);
+  -webkit-mask: var(--shape-wave) left center / 32px 8px repeat-x;
+  mask: var(--shape-wave) left center / 32px 8px repeat-x;
+}
+
+.next-workshop h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -0.01em;
+}
+
+.next-workshop .events {
+  margin-top: 8px;
+}
+
+.next-workshop-all {
+  margin-top: 24px;
+}
+
+.next-workshop-all a {
+  text-decoration: none;
+}
+
+.next-workshop-all a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Personal hello */
+
+.hello {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 56rem;
+  margin-top: -8px;
+}
+
+.hello img {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  flex: none;
+  -webkit-mask: var(--shape-pebble-mirrored) center / 100% 100% no-repeat;
+  mask: var(--shape-pebble-mirrored) center / 100% 100% no-repeat;
+}
+
+.hello h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.hello p {
+  color: var(--ink-soft);
+}
+
+.promises {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+  gap: 8px 40px;
+  margin: 40px 0 48px;
+  padding: 0;
+  list-style: none;
+}
+
+.promises li::before,
+.pick:has(input:checked) .pick-name::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 9px;
+  margin-right: 8px;
+  background: var(--plum);
+  -webkit-mask: var(--shape-pebble) center / contain no-repeat;
+  mask: var(--shape-pebble) center / contain no-repeat;
+}
+
+.pick:has(input:checked) .pick-name::before {
+  margin-right: 6px;
+}
+
+/* Each promise gets its own signature shape: arch, pebble, leaf */
+
+.promises li:nth-child(1)::before {
+  width: 14px;
+  height: 10px;
+  -webkit-mask-image: var(--shape-arch);
+  mask-image: var(--shape-arch);
+}
+
+.promises li:nth-child(3)::before {
+  width: 16px;
+  height: 8px;
+  -webkit-mask-image: var(--shape-leaf);
+  mask-image: var(--shape-leaf);
+}
+
+/* Buttons */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 28px;
+  border: 1px solid var(--line);
+  background: var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.button:hover {
+  background: var(--line-dark);
+  border-color: var(--line-dark);
+}
+
+.button.secondary {
+  background: transparent;
+  border-color: var(--ink);
+}
+
+.button.secondary:hover {
+  background: var(--line);
+  border-color: var(--line);
+}
+
+.button[disabled] {
+  cursor: default;
+  background: var(--kraft-light);
+  border-color: var(--kraft-light);
+  color: var(--ink-soft);
+}
+
+.button.block {
+  width: 100%;
+}
+
+/* Photo placeholder */
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--kraft-light);
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--line);
+}
+
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--paper);
+  padding: 4px 10px;
+}
+
+/* Shop grid */
+
+.set-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px var(--gutter);
+}
+
+.set-card {
+  text-decoration: none;
+}
+
+.set-card .photo {
+  margin-bottom: 20px;
+}
+
+.set-card h2 {
+  font-size: 22px;
+}
+
+.set-card .muted {
+  margin-top: 6px;
+}
+
+.set-card .price {
+  margin-top: 12px;
+}
+
+.set-card:hover h2 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+/* Gift set page */
+
+.set-back {
+  display: inline-block;
+  margin: 16px 0 24px;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.set-back:hover {
+  color: var(--ink);
+}
+
+.set-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+.set-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.set-photos .photo:first-child {
+  grid-column: 1 / -1;
+}
+
+.set-info {
+  position: sticky;
+  top: 32px;
+}
+
+.set-info h1 {
+  font-size: clamp(28px, 3.6vw, 40px);
+  letter-spacing: -0.015em;
+}
+
+.set-info .tagline {
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.set-info .price {
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+.inside {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Wave dividers between the items, like the one above the footer */
+.inside li::after {
+  content: "";
+  display: block;
+  height: 8px;
+  background: var(--plum);
+  -webkit-mask: var(--shape-wave) left center / 32px 8px repeat-x;
+  mask: var(--shape-wave) left center / 32px 8px repeat-x;
+}
+
+.inside-title {
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+.inside li {
+  padding-top: 12px;
+}
+
+.inside li:first-child {
+  padding-top: 0;
+}
+
+.inside li::after {
+  margin-top: 12px;
+}
+
+/* Waves only between items: the footer wave closes the page. */
+.inside li:last-child::after {
+  display: none;
+}
+
+.inside li span {
+  display: block;
+  color: var(--ink-soft);
+}
+
+.picker {
+  margin: 28px 0 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.picker legend {
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 12px;
+}
+
+.pick {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.pick input {
+  position: absolute;
+  opacity: 0;
+}
+
+.pick .photo {
+  aspect-ratio: 4 / 3;
+  margin-bottom: 8px;
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+}
+
+.pick:hover .photo {
+  outline-color: var(--line);
+}
+
+.pick:has(input:checked) .photo {
+  outline: 2px solid var(--ink);
+}
+
+.pick:has(input:focus-visible) .photo {
+  outline: 2px solid var(--ink);
+  outline-offset: 5px;
+}
+
+.pick-name {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.pick-meta {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.pick.is-sold {
+  cursor: default;
+  color: var(--ink-soft);
+}
+
+.pick.is-sold .photo {
+  opacity: 0.45;
+}
+
+.set-add {
+  margin-top: 20px;
+}
+
+/* Bag drawer */
+
+.bag-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 20;
+}
+
+.bag {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100%);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 21;
+}
+
+.bag-open .bag-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bag-open .bag {
+  transform: none;
+}
+
+.bag-open {
+  overflow: hidden;
+}
+
+.bag-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+
+.bag-head button {
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.bag-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 var(--gutter);
+}
+
+.bag-empty {
+  padding: 32px 0;
+}
+
+.bag-foot {
+  padding: 24px var(--gutter) 28px;
+  border-top: 1px solid var(--line);
+}
+
+/* Line items (bag and checkout) */
+
+.line {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.line .photo {
+  aspect-ratio: 1;
+}
+
+.line-visual .pebble-date {
+  width: 72px;
+  height: 64px;
+}
+
+.line-visual .pebble-date strong {
+  font-size: 22px;
+}
+
+.qty {
+  display: inline-flex;
+  border: 1px solid var(--line);
+}
+
+.qty button {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.qty button[disabled] {
+  color: var(--line);
+  cursor: default;
+}
+
+.qty span {
+  min-width: 24px;
+  display: grid;
+  place-items: center;
+}
+
+.line-name {
+  font-weight: 500;
+}
+
+.line-meta {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.line-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.totals {
+  display: grid;
+  gap: 6px;
+}
+
+.totals div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totals .grand {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-weight: 500;
+}
+
+.totals-note {
+  margin: 12px 0 20px;
+  font-size: 14px;
+}
+
+/* Checkout */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  margin-top: 24px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--white);
+}
+
+.field input:focus {
+  border-color: var(--ink);
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.check input {
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--ink);
+  flex: none;
+}
+
+.form-error {
+  margin-top: 20px;
+  color: var(--danger);
+}
+
+.summary {
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+
+.summary .line:first-of-type {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+}
+
+.summary .totals {
+  margin-top: 20px;
+}
+
+.summary .button {
+  margin-top: 24px;
+}
+
+/* Payment and thank you */
+
+.narrow {
+  max-width: 34rem;
+}
+
+.payment-head {
+  padding-bottom: 32px;
+  max-width: none;
+}
+
+.payment-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 420px);
+  grid-template-areas:
+    "qr facts"
+    "save done"
+    "hint .";
+  column-gap: clamp(32px, 5vw, 72px);
+  row-gap: 12px;
+  align-items: start;
+}
+
+.payment-qr {
+  grid-area: qr;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  padding: 12px;
+  background: var(--white);
+}
+
+.payment-save {
+  grid-area: save;
+}
+
+.payment-done {
+  grid-area: done;
+}
+
+/* What happens next: a calm full-width row under the payment */
+
+.next-steps {
+  margin-top: 64px;
+}
+
+.next-steps::before {
+  content: "";
+  display: block;
+  height: 8px;
+  margin-bottom: 40px;
+  background: var(--plum);
+  -webkit-mask: var(--shape-wave) left center / 32px 8px repeat-x;
+  mask: var(--shape-wave) left center / 32px 8px repeat-x;
+}
+
+.next-steps ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.next-steps li {
+  color: var(--ink-soft);
+}
+
+.next-steps li span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--plum);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.payment-hint {
+  grid-area: hint;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.payment-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.payment-facts {
+  grid-area: facts;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* The rows share the QR code's height, so both columns end on the same line. */
+.payment-facts div {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+}
+
+/* Lines only between the rows, not above or below them */
+.payment-facts div + div {
+  border-top: 1px solid var(--line);
+}
+
+.payment-facts dt {
+  color: var(--ink-soft);
+}
+
+.payment-facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Thank you */
+
+.thanks {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 64px 0 0;
+  text-align: center;
+}
+
+.thanks-shapes {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.thanks-shapes span {
+  display: block;
+  background: var(--plum);
+}
+
+.thanks-shapes .shape-arch {
+  width: 70px;
+  height: 50px;
+  -webkit-mask: var(--shape-arch) center / contain no-repeat;
+  mask: var(--shape-arch) center / contain no-repeat;
+}
+
+.thanks h1 {
+  font-size: clamp(36px, 6vw, 56px);
+  letter-spacing: -0.02em;
+}
+
+.thanks-lead {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.thanks-order {
+  margin-top: 16px;
+  color: var(--ink-soft);
+}
+
+.thanks-note {
+  margin: 56px 0 0;
+  padding: 40px 0;
+}
+
+.thanks-note::before,
+.thanks-stay::before {
+  content: "";
+  display: block;
+  height: 8px;
+  margin-bottom: 40px;
+  background: var(--plum);
+  -webkit-mask: var(--shape-wave) center / 32px 8px repeat-x;
+  mask: var(--shape-wave) center / 32px 8px repeat-x;
+}
+
+.thanks-note img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 24px;
+  object-fit: cover;
+  -webkit-mask: var(--shape-pebble-mirrored) center / 100% 100% no-repeat;
+  mask: var(--shape-pebble-mirrored) center / 100% 100% no-repeat;
+}
+
+.thanks-note p {
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.thanks-note .thanks-sign {
+  margin-top: 16px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.thanks-stay h2 {
+  margin-bottom: 20px;
+}
+
+.thanks-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.not-found-links {
+  margin-top: 40px;
+}
+
+.thanks-stay p {
+  margin-top: 24px;
+}
+
+/* Calendar */
+
+.events h2 {
+  margin: 48px 0 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* The first label follows the page intro, which already has its own space. */
+.events > h2:first-child {
+  margin-top: 0;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: start;
+  padding: 28px 0;
+  /* Linked from the shop page: leave some room above when scrolled to. */
+  scroll-margin-top: 24px;
+}
+
+/* Lines only between events, never around a single one. */
+.event + .event {
+  border-top: 1px solid var(--line);
+}
+
+/* Date inside a plum pebble: filled for upcoming, outlined for past */
+
+.pebble-date {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 78px;
+  color: var(--paper);
+  text-align: center;
+  line-height: 1;
+}
+
+.pebble-date svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pebble-date path {
+  fill: var(--plum);
+}
+
+.pebble-date > span {
+  position: relative;
+}
+
+.pebble-date strong {
+  display: block;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.pebble-date .label {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+.pebble-date.is-outline {
+  color: var(--ink-soft);
+}
+
+.pebble-date.is-outline path {
+  fill: none;
+  stroke: var(--plum);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.event-book {
+  min-width: 180px;
+  text-align: right;
+}
+
+.event-book .button {
+  margin-top: 12px;
+}
+
+.event h3 {
+  font-size: 20px;
+}
+
+.event-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.event-link:hover {
+  text-decoration: underline;
+}
+
+.event-meta {
+  margin-top: 6px;
+  color: var(--ink-soft);
+}
+
+.event-text {
+  margin-top: 12px;
+  max-width: 38rem;
+}
+
+.event.is-past {
+  color: var(--ink-soft);
+}
+
+.events-none {
+  padding: 28px 0;
+}
+
+/* Legal text */
+
+.legal {
+  max-width: 42rem;
+}
+
+.legal h2 {
+  font-size: 20px;
+  margin: 40px 0 12px;
+}
+
+.legal h2:first-child {
+  margin-top: 0;
+}
+
+.legal p,
+.legal ul {
+  margin: 0 0 12px;
+}
+
+.legal-draft {
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  margin-bottom: 32px;
+}
+
+/* Consent banner */
+
+.consent {
+  position: fixed;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: var(--gutter);
+  z-index: 30;
+  max-width: 34rem;
+  margin-left: auto;
+  padding: 20px 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.consent-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.consent-actions .button {
+  min-height: 44px;
+  padding: 0 20px;
+}
+
+/* Footer */
+
+.site-footer::before {
+  content: "";
+  display: block;
+  height: 12px;
+  background: var(--plum);
+  -webkit-mask: var(--shape-wave) left center / 48px 12px repeat-x;
+  mask: var(--shape-wave) left center / 48px 12px repeat-x;
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding-top: 32px;
+  padding-bottom: 40px;
+  font-size: 14px;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Small screens */
+
+@media (max-width: 800px) {
+
+  .set-grid,
+  .set-layout,
+  .checkout-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .set-info {
+    position: static;
+  }
+
+  .set-photos {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .set-photos .photo {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+  }
+
+  .event {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .event .button {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .event h3 {
+  font-size: 20px;
+}
+
+.event-meta {
+  margin-top: 6px;
+  color: var(--ink-soft);
+}
+
+.event-text {
+  margin-top: 12px;
+  max-width: 38rem;
+}
+
+.event.is-past {
+  color: var(--ink-soft);
+}
+
+/* Legal text */
+
+.legal {
+  max-width: 42rem;
+}
+
+.legal h2 {
+  font-size: 20px;
+  margin: 40px 0 12px;
+}
+
+.legal h2:first-child {
+  margin-top: 0;
+}
+
+.legal p,
+.legal ul {
+  margin: 0 0 12px;
+}
+
+.legal-draft {
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  margin-bottom: 32px;
+}
+
+/* Footer */
+
+.site-footer::before {
+  content: "";
+  display: block;
+  height: 12px;
+  background: var(--plum);
+  -webkit-mask: var(--shape-wave) left center / 48px 12px repeat-x;
+  mask: var(--shape-wave) left center / 48px 12px repeat-x;
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding-top: 32px;
+  padding-bottom: 40px;
+  font-size: 14px;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Small screens */
+
+@media (max-width: 800px) {
+
+  .set-grid,
+  .set-layout,
+  .checkout-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .set-info {
+    position: static;
+  }
+
+  .set-photos {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .set-photos .photo {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+  }
+
+  .event {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .event .pebble-date {
+    width: 72px;
+    height: 64px;
+  }
+
+  .event .pebble-date strong {
+    font-size: 24px;
+  }
+
+  .event-book {
+    grid-column: 2;
+    text-align: left;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 560px) {
+
+  /* Phones: just the logo, the language switch and the bag. The shop is the logo link,
+     workshops are reached from the shop page. */
+  .site-header .wrap {
+    flex-wrap: nowrap;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .site-logo img {
+    height: 32px;
+  }
+
+  .site-nav {
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+
+  .site-nav > a {
+    display: none;
+  }
+
+  .picker-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .pick-name {
+    font-size: 13px;
+  }
+
+  .site-tagline {
+    font-size: 7px;
+  }
+
+  .fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .payment-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "qr"
+      "save"
+      "hint"
+      "facts"
+      "done";
+  }
+
+  .payment-qr {
+    max-width: 320px;
+    justify-self: center;
+  }
+
+  .payment-facts {
+    margin-top: 20px;
+  }
+
+  .next-steps ol {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  /* Phones: the headline breaks between its two sentences ("Small things." / "Good feelings."). */
+  .page-head h1 .sentence {
+    display: block;
+  }
+
+  /* Shop page on phones: a plum drop beside the headline, fully on screen. */
+  [data-page="shop"] .page-head h1 {
+    position: relative;
+  }
+
+  [data-page="shop"] .page-head h1::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    width: 80px;
+    height: 40px;
+    /* Mirrored, so the round end faces the text and the tip runs off the edge. */
+    transform: translateY(-50%) scaleX(-1) rotate(-18deg);
+    background: var(--plum);
+    -webkit-mask: var(--shape-leaf) center / contain no-repeat;
+    mask: var(--shape-leaf) center / contain no-repeat;
+  }
+
+  /* Phones: a small avatar next to "Hi, I'm Svenja.", the full note below across the width.
+     The promises are left out on phones to keep the way to the gift sets short. */
+  .hello {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px 12px;
+    margin-top: 0;
+  }
+
+  .hello > div {
+    display: contents;
+  }
+
+  .hello img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hello h2 {
+    margin: 0;
+  }
+
+  .hello p {
+    grid-column: 1 / -1;
+  }
+
+  .promises {
+    display: none;
+  }
+
+  main {
+    padding-bottom: 56px;
+  }
+
+  /* The workshop on the shop page shows just its date and title on phones.
+     The whole row links to the workshop on the calendar page, where the details and sign-up are. */
+  .next-workshop .event-meta,
+  .next-workshop .event-text,
+  .next-workshop .event-book {
+    display: none;
+  }
+
+  .next-workshop .event {
+    position: relative;
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  .next-workshop .event-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .next-workshop-all {
+    margin-top: 32px;
+  }
+
+  .next-workshop {
+    margin-top: 48px;
+  }
+
+  .next-workshop::before {
+    margin-bottom: 32px;
+  }
+
+  .hello ~ .set-grid {
+    margin-top: 40px;
+  }
+
+  .summary {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  * {
+    transition: none !important;
+  }
+}
+
+
+/* Coming soon (config.comingSoon): the note that stands in for the gift sets on the shop page. */
+.coming-soon { margin: 2.5rem 0 1rem; padding: 2rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+.coming-soon h2 { margin: 0.6rem 0 0.5rem; }
+.coming-soon p { margin: 0; }
+.coming-soon a { text-decoration: underline; text-underline-offset: 0.15em; }
+.coming-soon-note { margin: 0.6rem 0 0; }
+.coming-soon-note a { text-decoration: underline; text-underline-offset: 0.15em; }

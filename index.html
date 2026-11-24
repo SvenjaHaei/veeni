@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>veeni · Handmade in Prague</title>
+  <meta name="description" content="Handmade gift sets from Prague. Small things. Good feelings.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="veeni">
+  <meta property="og:title" content="veeni · Handmade in Prague">
+  <meta property="og:description" content="Handmade gift sets from Prague. Small things. Good feelings.">
+  <meta property="og:image" content="https://veeni.cz/images/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon-plum.svg?v=2" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css?v=115">
+</head>
+<body data-page="shop" data-title="title.shop">
+  <main class="wrap">
+    <div class="page-head">
+      <h1 data-t="home.title" data-split></h1>
+    </div>
+    <section class="hello">
+      <img src="images/svenja.jpg" alt="Svenja" width="112" height="112">
+      <div>
+        <h2 data-t="home.helloTitle"></h2>
+        <p data-t="home.hello"></p>
+      </div>
+    </section>
+    <ul class="promises label">
+      <li data-t="home.promise1"></li>
+      <li data-t="home.promise2"></li>
+      <li data-t="home.promise3" id="promise-shipping"></li>
+    </ul>
+    <div class="set-grid" id="set-grid"></div>
+
+    <!-- Filled by shop.js with the next bookable workshop; stays hidden when there is none. -->
+    <section class="next-workshop" id="next-workshop" hidden>
+      <h2 data-t="home.workshopTitle"></h2>
+      <div class="events" id="next-workshop-event"></div>
+      <p class="next-workshop-all"><a class="label" href="calendar.html"><span data-t="home.workshopAll"></span> →</a></p>
+    </section>
+  </main>
+
+  <script src="assets/config.js?v=115"></script>
+  <script src="assets/i18n.js?v=115"></script>
+  <script src="assets/site.js?v=115"></script>
+  <script src="assets/shop.js?v=115"></script>
+</body>
+</html>

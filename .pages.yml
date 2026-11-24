@@ -1,0 +1,155 @@
+# Pages CMS (app.pagescms.org): simple forms for the gift sets and the workshops & markets calendar.
+# The forms write straight to data/products.json and data/events.json; photos go to images/sets/.
+media:
+  input: images/sets
+  output: images/sets
+  categories: [image]
+  rename: safe
+
+content:
+  - name: products
+    label: Gift sets
+    type: file
+    path: data/products.json
+    format: json
+    list: true
+    view:
+      primary: id
+    fields:
+      - name: id
+        label: Web address name
+        description: Short, lowercase, no spaces (e.g. life-things). Appears in the link to the gift set. Don't change it after launch.
+        type: string
+        required: true
+      - name: sku
+        label: Product code
+        description: Short code for orders and the sold list (e.g. SET-LIFE). Don't change it after launch.
+        type: string
+        required: true
+      - name: price
+        label: Price (CZK)
+        type: number
+        required: true
+      - name: name
+        label: Name
+        type: object
+        fields:
+          - { name: en, label: English, type: string, required: true }
+          - { name: cs, label: Czech, type: string, required: true }
+      - name: tagline
+        label: Tagline
+        type: object
+        fields:
+          - { name: en, label: English, type: string }
+          - { name: cs, label: Czech, type: string }
+      - name: items
+        label: What's inside
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.name.en}"
+        fields:
+          - name: name
+            label: Item
+            type: object
+            fields:
+              - { name: en, label: English, type: string, required: true }
+              - { name: cs, label: Czech, type: string, required: true }
+          - name: note
+            label: Short note
+            type: object
+            fields:
+              - { name: en, label: English, type: string }
+              - { name: cs, label: Czech, type: string }
+      - name: sets
+        label: The individual sets (each one of a kind)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.id} · {fields.name.en}"
+        fields:
+          - name: id
+            label: Number
+            description: Two digits, e.g. 01, 02. Never reuse a number.
+            type: string
+            required: true
+          - name: name
+            label: Name
+            type: object
+            fields:
+              - { name: en, label: English, type: string }
+              - { name: cs, label: Czech, type: string }
+          - name: holder
+            label: Holder
+            type: select
+            options:
+              values:
+                - { name: candle, label: Candle holder }
+                - { name: incense, label: Incense stick holder }
+          - name: note
+            label: Note (not shown on the site yet)
+            type: object
+            fields:
+              - { name: en, label: English, type: string }
+              - { name: cs, label: Czech, type: string }
+          - name: sold
+            label: Sold (also when sold at a market)
+            type: boolean
+          - name: images
+            label: Photos (first one is the main photo)
+            type: image
+            options:
+              multiple:
+                max: 8
+
+  - name: events
+    label: Workshops & markets
+    type: file
+    path: data/events.json
+    format: json
+    list: true
+    view:
+      primary: title
+    fields:
+      - name: id
+        label: Internal name
+        description: Short, lowercase, no spaces (e.g. evt-2026-12-wreaths). Don't change it once people have booked.
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: type
+        label: Kind
+        type: select
+        required: true
+        options:
+          values: [Workshop, Market, Pop-up]
+      - { name: startTime, label: "Starts (e.g. 14:00)", type: string }
+      - { name: endTime, label: "Ends (e.g. 16:30)", type: string }
+      - { name: venue, label: Place, type: string }
+      - { name: city, label: City, type: string }
+      - name: description
+        label: Description
+        type: text
+      - name: booking
+        label: Sign-up on veeni (workshops only, leave empty for markets)
+        type: object
+        fields:
+          - { name: price, label: Price per person (CZK), type: number }
+          - name: spots
+            label: Places in total
+            description: All places for this workshop. Places booked through the website are counted automatically.
+            type: number
+      - name: registrationUrl
+        label: Link for more information (markets)
+        type: string
