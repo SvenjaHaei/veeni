@@ -1692,8 +1692,14 @@ main {
 
 
 /* Coming soon (config.comingSoon): the note that stands in for the gift sets on the shop page. */
-.coming-soon { margin: 2.5rem 0 1rem; padding: 2rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
-.coming-soon h2 { margin: 0 0 0.5rem; }
+.coming-soon { margin: 3rem 0 2rem; text-align: center; }
+/* A big plum pebble with the words on it. */
+.coming-soon-shape { position: relative; display: grid; place-items: center; width: min(440px, 86vw); aspect-ratio: 100 / 90; margin: 0 auto 1.25rem; }
+.coming-soon-shape::before {
+  content: ""; position: absolute; inset: 0; background: var(--plum);
+  -webkit-mask: var(--shape-pebble) center / 100% 100% no-repeat; mask: var(--shape-pebble) center / 100% 100% no-repeat;
+}
+.coming-soon-shape h2 { position: relative; margin: 0.4em 0 0; padding: 0 18%; color: var(--paper); font-size: clamp(1.7rem, 5.5vw, 2.6rem); line-height: 1.15; }
 .coming-soon p { margin: 0; }
 .coming-soon a { text-decoration: underline; text-underline-offset: 0.15em; }
 .coming-soon-note { margin: 0.6rem 0 0; }
